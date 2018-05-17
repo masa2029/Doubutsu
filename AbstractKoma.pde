@@ -5,6 +5,9 @@ abstract class AbstractKoma {
   int team;//0 or 1
   KomaStatus kStat;
 
+
+
+
   AbstractKoma(String name, int x, int y, int team, boolean active) {
     this.name = name;
     this.x = x;
@@ -13,6 +16,10 @@ abstract class AbstractKoma {
     this.kStat = new KomaStatus(active);
   }
 
+
+
+  
+  
   void draw() {
     String komaImage = "";
     if (this.team==0 && this.kStat.active) komaImage = this.name+"A.png";
@@ -24,3 +31,13 @@ abstract class AbstractKoma {
 
   }
 }
+
+
+void move(int toX, int toY) {
+    this.updatePos(toX, toY);
+  }
+  void updatePos(int toX, int toY) {
+    this.x=toX;
+    this.y=toY;
+    gs.turn = (gs.turn+1)%2;
+  }
